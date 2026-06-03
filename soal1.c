@@ -31,7 +31,7 @@ int compareByTahun(const void* a, const void* b)
 // comparator function (nilai)
 int compareByNilai(const void* a, const void* b)
 {
-    return ((struct Artefak*)b)->tahun - ((struct Artefak*)a)->tahun;
+    return ((struct Artefak*)b)->nilai - ((struct Artefak*)a)->nilai;
 }
 
 // comparator function (nama)
@@ -75,6 +75,7 @@ int main(){
         if(strcmp(arr[i].kategori, arr[i+1].kategori) == 0){
             if(arr[i].tahun == arr[i+1].tahun){
                 qsort(arr, n, sizeof(struct Artefak), compareByNilai);
+                printf("1");
             }
         }
     }
