@@ -75,7 +75,6 @@ int main(){
         if(strcmp(arr[i].kategori, arr[i+1].kategori) == 0){
             if(arr[i].tahun == arr[i+1].tahun){
                 qsort(arr, n, sizeof(struct Artefak), compareByNilai);
-                printf("1");
             }
         }
     }
