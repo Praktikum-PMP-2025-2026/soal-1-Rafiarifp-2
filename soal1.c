@@ -22,14 +22,24 @@ typedef struct Artefak {
     int nilai;
 } Artefak;
 
-// Comparison function for sorting based on age (https://www.geeksforgeeks.org/c/sort-array-of-structs-based-on-a-member-in-c/)
+// comparator function (tahun)
 int compareByTahun(const void* a, const void* b)
 {
     return ((struct Artefak*)a)->tahun - ((struct Artefak*)b)->tahun;
 }
 
+// comparator function (nama)
+int compareByNama(const void *a, const void *b) {
+    return strcmp(((struct Artefak*)a)->nama, ((struct Artefak*)a)->nama);
+}
+
+// comparator function (kategori)
+int compareByKategori(const void *a, const void *b) {
+    return strcmp(((struct Artefak*)a)->kategori, ((struct Artefak*)a)->kategori);
+}
+
 int main(){
-    char temp_nama[50];
+    char temp;
     int n, i, j;
 
     // scanf n & deklarasi array of artefak berukuran n
@@ -40,10 +50,19 @@ int main(){
     for(int i=0;i<n;i++){
         scanf("%s %s %d %d", &arr[i].nama, &arr[i].kategori, &arr[i].tahun, &arr[i].nilai);
     }
-
-    // sorting algorithm berdasarkan tahun
     int size = sizeof(arr) / sizeof(arr[0]);
-    qsort(arr, n, sizeof(struct Artefak), compareByTahun);
+
+    // sorting algorithm berdasarkan alphabet kategori
+    qsort(arr, n, sizeof(struct Artefak), compareByKategori);
+
+    // sorting algorithm berdasarkan tahun untuk kategori yang sama
+    for(int i=0;i<n;i++){
+        if(arr[i].kategori == arr[i+1].kategori){
+            if(arr[i].tahun == arr[i+1].tahun){
+                qsort(arr, n, sizeof(struct Artefak), compareByTahun);
+            }
+        }
+    }
 
     // print sorted array
     for (int i = 0; i < n; i++) {
