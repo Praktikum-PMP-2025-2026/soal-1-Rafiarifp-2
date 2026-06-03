@@ -63,7 +63,7 @@ int main(){
 
     // sorting algorithm berdasarkan tahun untuk kategori yang sama
     for(int i=0;i<n-1;i++){
-        if(arr[i].kategori == arr[i+1].kategori){
+        if(strcmp(arr[i].kategori, arr[i+1].kategori) == 0){
             qsort(arr, n, sizeof(struct Artefak), compareByTahun);
         }
     }
