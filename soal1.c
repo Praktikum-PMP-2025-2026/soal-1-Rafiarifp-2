@@ -79,6 +79,17 @@ int main(){
         }
     }
 
+    // sorting algorithm berdasarkan nama untuk kategori, tahun & nilai yang sama
+    for(int i=0;i<n-1;i++){
+        if(strcmp(arr[i].kategori, arr[i+1].kategori) == 0){
+            if(arr[i].tahun == arr[i+1].tahun){
+                if(arr[i].nilai == arr[i+1].nilai){
+                    qsort(arr, n, sizeof(struct Artefak), compareByNama);
+                }
+            }
+        }
+    }
+
     // print sorted array
     for (int i = 0; i < n; i++) {
         printf("%s %s %d %d\n", arr[i].nama, arr[i].kategori, arr[i].tahun, arr[i].nilai);
