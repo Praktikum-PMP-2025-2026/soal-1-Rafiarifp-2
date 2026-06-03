@@ -28,6 +28,12 @@ int compareByTahun(const void* a, const void* b)
     return ((struct Artefak*)a)->tahun - ((struct Artefak*)b)->tahun;
 }
 
+// comparator function (nilai)
+int compareByNilai(const void* a, const void* b)
+{
+    return ((struct Artefak*)b)->tahun - ((struct Artefak*)a)->tahun;
+}
+
 // comparator function (nama)
 int compareByNama(const void *a, const void *b) {
     return strcmp(((struct Artefak*)a)->nama, ((struct Artefak*)b)->nama);
@@ -58,12 +64,18 @@ int main(){
     // sorting algorithm berdasarkan tahun untuk kategori yang sama
     for(int i=0;i<n-1;i++){
         if(arr[i].kategori == arr[i+1].kategori){
-            if(arr[i].tahun == arr[i+1].tahun){
-                qsort(arr, n, sizeof(struct Artefak), compareByTahun);
-            }
+            qsort(arr, n, sizeof(struct Artefak), compareByTahun);
         }
     }
 
+    // sorting algorithm berdasarkan nilai untuk kategori & tahun yang sama
+    for(int i=0;i<n-1;i++){
+        if(arr[i].kategori == arr[i+1].kategori){
+            if(arr[i].tahun == arr[i+1].tahun){
+                qsort(arr, n, sizeof(struct Artefak), compareByNilai);
+            }
+        }
+    }
     // print sorted array
     for (int i = 0; i < n; i++) {
         printf("%s %s %d %d\n", arr[i].nama, arr[i].kategori, arr[i].tahun, arr[i].nilai);
