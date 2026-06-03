@@ -56,7 +56,7 @@ int main(){
     qsort(arr, n, sizeof(struct Artefak), compareByKategori);
 
     // sorting algorithm berdasarkan tahun untuk kategori yang sama
-    for(int i=0;i<n;i++){
+    for(int i=0;i<n-1;i++){
         if(arr[i].kategori == arr[i+1].kategori){
             if(arr[i].tahun == arr[i+1].tahun){
                 qsort(arr, n, sizeof(struct Artefak), compareByTahun);
