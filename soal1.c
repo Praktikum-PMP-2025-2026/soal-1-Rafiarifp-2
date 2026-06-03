@@ -30,12 +30,12 @@ int compareByTahun(const void* a, const void* b)
 
 // comparator function (nama)
 int compareByNama(const void *a, const void *b) {
-    return strcmp(((struct Artefak*)a)->nama, ((struct Artefak*)a)->nama);
+    return strcmp(((struct Artefak*)a)->nama, ((struct Artefak*)b)->nama);
 }
 
 // comparator function (kategori)
 int compareByKategori(const void *a, const void *b) {
-    return strcmp(((struct Artefak*)a)->kategori, ((struct Artefak*)a)->kategori);
+    return strcmp(((struct Artefak*)a)->kategori, ((struct Artefak*)b)->kategori);
 }
 
 int main(){
